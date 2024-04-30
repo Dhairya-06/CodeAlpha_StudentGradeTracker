@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class GradeTracker {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Create ArrayList to store students' grades
+        ArrayList<Double> grades = new ArrayList<>();
+
+        // Ask for the number of students
+        System.out.print("Enter the number of students: ");
+        int numStudents = scanner.nextInt();
+
+        // Prompt the teacher to enter grades for each student
+        for (int i = 0; i < numStudents; i++) {
+            System.out.print("Enter grade for student " + (i + 1) + ": ");
+            double grade = scanner.nextDouble();
+            grades.add(grade);
+        }
+
+        // Calculate average, highest, and lowest grades
+        double sum = 0;
+        double highestGrade = Double.MIN_VALUE;
+        double lowestGrade = Double.MAX_VALUE;
+
+        for (double grade : grades) {
+            sum += grade;
+            if (grade > highestGrade) {
+                highestGrade = grade;
+            }
+            if (grade < lowestGrade) {
+                lowestGrade = grade;
+            }
+        }
+
+        double average = sum / numStudents;
+
+        // Display results
+        System.out.println("Average grade: " + average);
+        System.out.println("Highest grade: " + highestGrade);
+        System.out.println("Lowest grade: " + lowestGrade);
+
+        scanner.close();
+    }
+}
